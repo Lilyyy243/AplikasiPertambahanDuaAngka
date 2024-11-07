@@ -91,6 +91,11 @@ public class AplikasiPertambahanAngka extends javax.swing.JFrame {
                 nilai1ActionPerformed(evt);
             }
         });
+        nilai1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nilai1KeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -98,6 +103,12 @@ public class AplikasiPertambahanAngka extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(6, 5, 0, 0);
         jPanel1.add(nilai1, gridBagConstraints);
+
+        nilai2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nilai2KeyTyped(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -184,15 +195,34 @@ public class AplikasiPertambahanAngka extends javax.swing.JFrame {
     }//GEN-LAST:event_tambahActionPerformed
 
     private void nilai1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nilai1ActionPerformed
-      // TODO add your handling code here:
-    }//GEN-LAST:event_nilai1ActionPerformed
+    // Memindahkan fokus ke text field nilai2
+    nilai2.requestFocus();
+}//GEN-LAST:event_nilai1ActionPerformed
 
     private void hapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hapusActionPerformed
     // Mengosongkan semua text field
         nilai1.setText("");
         nilai2.setText("");
-        nilaiHasil.setText("");    // TODO add your handling code here:
+        nilaiHasil.setText("");
+        // Memindahkan fokus ke text field nilai1
+        nilai1.requestFocus();
     }//GEN-LAST:event_hapusActionPerformed
+
+    private void nilai1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nilai1KeyTyped
+    char c = evt.getKeyChar();
+    if (!Character.isDigit(c) && c != '\b' && c != '\n') {
+        evt.consume();  // Mengabaikan karakter non-digit kecuali backspace dan enter
+        javax.swing.JOptionPane.showMessageDialog(this, "Input harus berupa angka", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
+}//GEN-LAST:event_nilai1KeyTyped
+
+    private void nilai2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nilai2KeyTyped
+    char c = evt.getKeyChar();
+    if (!Character.isDigit(c) && c != '\b' && c != '\n') {
+        evt.consume();  // Mengabaikan karakter non-digit kecuali backspace dan enter
+        javax.swing.JOptionPane.showMessageDialog(this, "Input harus berupa angka", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
+}//GEN-LAST:event_nilai2KeyTyped
 
     /**
      * @param args the command line arguments
